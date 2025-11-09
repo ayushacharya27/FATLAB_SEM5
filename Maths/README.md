@@ -412,6 +412,50 @@ tv = qf(0.975,dof,dof)
 
 
 ## Experiment 10
+Chi Square Test
+
+### To Check Goodness of Fit (From Expected)
+```bash
+# Assume Given Fit
+n = 5 # 5 Coins
+P = 0.5 # Probability of Getting Heads
+obf = c(9,45,6,23,53) # Assuming 5 Possibilities
+x = c(0:n)
+exf = c(dbinom(x,n,P)*256)
+
+chisq_cv = sum((exf - obf)^2/exf);
+
+chisq_tv = chisq(1-alpha, n)
+
+if (cv<=tv){ Good Fit}
+```
+
+### To check independency
+
+If Multiple Table Given,
+```bash
+row1 = c(98,56);
+row2 = c(18,46);
+row3 = c(58,26);
+
+matrix = rbind(row1,row2,row3); # coz the chisq test just takes
+```
+![DataFrame Output](Photos/image_7.png)
+
+```bash
+cv = chisq.test(data)
+
+p_val = cv$p.value
+if(cv>alpha){"Independent"}
+```
+
+
+
+
+
+
+
+
 
 
 
